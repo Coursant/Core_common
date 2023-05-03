@@ -1,3 +1,0 @@
-package Core_common
-
-//
