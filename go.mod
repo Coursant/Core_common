@@ -7,7 +7,6 @@ require (
 	github.com/Coursant/Core_rapidsnark/types v1.0.2
 
 	github.com/Coursant/Core_js_web_Zk v1.0.0
-	github.com/Coursant/Core_rapidsnark/types v1.0.2
 
 	github.com/iden3/go-circuits v1.0.2
 	github.com/iden3/go-iden3-crypto v0.0.15
