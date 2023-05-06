@@ -2,20 +2,21 @@ package Core_common_test
 
 import (
 	"encoding/json"
+	jwz "github.com/Coursant/Core_js_web_Zk"
 	"testing"
 
+	"github.com/Coursant/Core_common"
+	"github.com/Coursant/Core_common/mock"
+	"github.com/Coursant/Core_common/packers"
+	"github.com/Coursant/Core_common/protocol"
 	core "github.com/Coursant/Core_origin"
 	"github.com/gofrs/uuid"
-	"github.com/iden3/iden3comm"
-	"github.com/iden3/iden3comm/mock"
-	"github.com/iden3/iden3comm/packers"
-	"github.com/iden3/iden3comm/protocol"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestPackagerPlainPacker(t *testing.T) {
-	pm := iden3comm.NewPackageManager()
+	pm := Core_common.NewPackageManager()
 	err := pm.RegisterPackers(&packers.PlainMessagePacker{})
 	assert.NoError(t, err)
 
@@ -81,7 +82,7 @@ func TestPackagerZKPPacker(t *testing.T) {
 
 func TestPackagerAnonryptPacker(t *testing.T) {
 
-	pm := iden3comm.NewPackageManager()
+	pm := Core_common.NewPackageManager()
 	pm.RegisterPackers(packers.NewAnoncryptPacker(mock.ResolveEncPrivateKey), &packers.PlainMessagePacker{})
 	// nolint :
 
@@ -181,7 +182,7 @@ func TestUnpackWithType(t *testing.T) {
 	assert.Equal(t, unpackedMsg.Typ, packers.MediaTypeZKPMessage)
 }
 
-func createFetchCredentialMessage(typ iden3comm.MediaType, from, to *core.DID) ([]byte, error) {
+func createFetchCredentialMessage(typ Core_common.MediaType, from, to *core.DID) ([]byte, error) {
 
 	var msg protocol.CredentialFetchRequestMessage
 	msg.From = from.String()
@@ -200,8 +201,8 @@ func createFetchCredentialMessage(typ iden3comm.MediaType, from, to *core.DID) (
 	return marshalledMsg, err
 }
 
-func initPackageManager(t *testing.T) *iden3comm.PackageManager {
-	pm := iden3comm.NewPackageManager()
+func initPackageManager(t *testing.T) *Core_common.PackageManager {
+	pm := Core_common.NewPackageManager()
 	err := pm.RegisterPackers(&packers.PlainMessagePacker{})
 	require.NoError(t, err)
 	mockedProvingMethod := &mock.ProvingMethodGroth16AuthV2{ProvingMethodAlg: jwz.ProvingMethodAlg{Alg: "groth16-mock", CircuitID: "authV2"}}

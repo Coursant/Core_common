@@ -4,23 +4,23 @@ package protocol
 import (
 	"encoding/json"
 
-	"github.com/iden3/go-rapidsnark/types"
-	"github.com/iden3/iden3comm"
+	"github.com/Coursant/Core_common"
+	"github.com/Coursant/Core_rapidsnark/types"
 )
 
 const (
 
 	// AuthorizationRequestMessageType defines auth request type of the communication protocol
-	AuthorizationRequestMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "authorization/1.0/request"
+	AuthorizationRequestMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "authorization/1.0/request"
 	// AuthorizationResponseMessageType defines auth response type of the communication protocol
-	AuthorizationResponseMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "authorization/1.0/response"
+	AuthorizationResponseMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "authorization/1.0/response"
 )
 
 // AuthorizationResponseMessage is struct the represents iden3message authorization response
 type AuthorizationResponseMessage struct {
 	ID       string                           `json:"id"`
-	Typ      iden3comm.MediaType              `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage        `json:"type"`
+	Typ      Core_common.MediaType            `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage      `json:"type"`
 	ThreadID string                           `json:"thid,omitempty"`
 	Body     AuthorizationMessageResponseBody `json:"body,omitempty"`
 
@@ -38,8 +38,8 @@ type AuthorizationMessageResponseBody struct {
 // AuthorizationRequestMessage is struct the represents iden3message authorization request
 type AuthorizationRequestMessage struct {
 	ID       string                          `json:"id"`
-	Typ      iden3comm.MediaType             `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage       `json:"type"`
+	Typ      Core_common.MediaType           `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage     `json:"type"`
 	ThreadID string                          `json:"thid,omitempty"`
 	Body     AuthorizationRequestMessageBody `json:"body,omitempty"`
 

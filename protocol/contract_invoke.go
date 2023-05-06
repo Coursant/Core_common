@@ -3,19 +3,19 @@ package protocol
 import (
 	"encoding/json"
 
-	"github.com/iden3/iden3comm"
+	"github.com/Coursant/Core_common"
 )
 
 const (
 	// ContractInvokeRequestMessageType defines contract invoke request type of the communication protocol
-	ContractInvokeRequestMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "proofs/1.0/contract-invoke-request"
+	ContractInvokeRequestMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "proofs/1.0/contract-invoke-request"
 )
 
 // ContractInvokeRequestMessage is struct the represents iden3message contract invoke request
 type ContractInvokeRequestMessage struct {
 	ID       string                           `json:"id"`
-	Typ      iden3comm.MediaType              `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage        `json:"type"`
+	Typ      Core_common.MediaType            `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage      `json:"type"`
 	ThreadID string                           `json:"thid,omitempty"`
 	Body     ContractInvokeRequestMessageBody `json:"body,omitempty"`
 

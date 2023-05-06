@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/iden3/iden3comm/mock"
+	"github.com/Coursant/Core_common/mock"
 
 	"github.com/stretchr/testify/require"
 	"gopkg.in/square/go-jose.v2"

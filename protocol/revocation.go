@@ -1,22 +1,22 @@
 package protocol
 
 import (
-	"github.com/iden3/go-schema-processor/verifiable"
-	"github.com/iden3/iden3comm"
+	"github.com/Coursant/Core_common"
+	"github.com/Coursant/Core_common/schema-processor/verifiable"
 )
 
 const (
 	// RevocationStatusRequestMessageType is type for request of revocation status
-	RevocationStatusRequestMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "revocation/1.0/request-status"
+	RevocationStatusRequestMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "revocation/1.0/request-status"
 	// RevocationStatusResponseMessageType is type for response with a revocation status
-	RevocationStatusResponseMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "revocation/1.0/status"
+	RevocationStatusResponseMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "revocation/1.0/status"
 )
 
 // RevocationStatusRequestMessage is struct the represents body for proof generation request
 type RevocationStatusRequestMessage struct {
 	ID       string                             `json:"id"`
-	Typ      iden3comm.MediaType                `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage          `json:"type"`
+	Typ      Core_common.MediaType              `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage        `json:"type"`
 	ThreadID string                             `json:"thid,omitempty"`
 	Body     RevocationStatusRequestMessageBody `json:"body,omitempty"`
 
@@ -31,10 +31,10 @@ type RevocationStatusRequestMessageBody struct {
 
 // RevocationStatusResponseMessage is struct the represents body for proof generation request
 type RevocationStatusResponseMessage struct {
-	ID       string                    `json:"id"`
-	Typ      iden3comm.MediaType       `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage `json:"type"`
-	ThreadID string                    `json:"thid,omitempty"`
+	ID       string                      `json:"id"`
+	Typ      Core_common.MediaType       `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage `json:"type"`
+	ThreadID string                      `json:"thid,omitempty"`
 
 	Body RevocationStatusResponseMessageBody `json:"body,omitempty"`
 

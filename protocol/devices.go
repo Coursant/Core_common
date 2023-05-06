@@ -1,18 +1,18 @@
 package protocol
 
-import "github.com/iden3/iden3comm"
+import "github.com/Coursant/Core_common"
 
 const (
 	// DeviceRegistrationRequestMessageType defines device registration request type of the communication protocol
-	DeviceRegistrationRequestMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "devices/1.0/registration"
+	DeviceRegistrationRequestMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "devices/1.0/registration"
 )
 
 // DeviceRegistrationRequestMessage represent Iden3message for register device request
 type DeviceRegistrationRequestMessage struct {
-	ID       string                    `json:"id"`
-	Typ      iden3comm.MediaType       `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage `json:"type"`
-	ThreadID string                    `json:"thid,omitempty"`
+	ID       string                      `json:"id"`
+	Typ      Core_common.MediaType       `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage `json:"type"`
+	ThreadID string                      `json:"thid,omitempty"`
 
 	Body DeviceRegistrationRequestMessageBody `json:"body,omitempty"`
 

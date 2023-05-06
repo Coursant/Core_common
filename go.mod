@@ -8,6 +8,8 @@ require (
 	github.com/Coursant/Core_rapidsnark/verifier v1.0.2
 	github.com/Coursant/Core_rapidsnark/witness v1.0.1
 	github.com/Coursant/Core_js_web_Zk v1.0.0
+	github.com/Coursant/Core_rapidsnark/types v1.0.2
+
 	github.com/iden3/go-circuits v1.0.2
 	github.com/iden3/go-iden3-crypto v0.0.15
 	github.com/stretchr/testify v1.8.2
@@ -23,9 +25,6 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dchest/blake512 v1.0.0 // indirect
 	github.com/iden3/go-merkletree-sql/v2 v2.0.4 // indirect
-	github.com/iden3/go-rapidsnark/prover v0.0.10 // indirect
-	github.com/iden3/go-rapidsnark/verifier v0.0.5 // indirect
-	github.com/iden3/go-rapidsnark/witness v0.0.6 // indirect
 	github.com/iden3/wasmer-go v0.0.1 // indirect
 	github.com/mr-tron/base58 v1.2.0 // indirect
 	github.com/piprate/json-gold v0.5.1-0.20230111113000-6ddbe6e6f19f // indirect

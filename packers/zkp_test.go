@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/Coursant/Core_js_web_Zk"
+	core "github.com/Coursant/Core_origin"
 	"github.com/iden3/go-circuits"
-	core "github.com/iden3/go-iden3-core"
-	"github.com/iden3/go-jwz"
-	"github.com/iden3/iden3comm/mock"
-	"github.com/iden3/iden3comm/protocol"
+
+	"github.com/Coursant/Core_common/mock"
+	"github.com/Coursant/Core_common/protocol"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -50,7 +51,7 @@ func TestZKPPacker_Pack(t *testing.T) {
 	err = token.ParsePubSignals(&outs)
 	assert.Nil(t, err)
 
-	didFromToken, err := core.ParseDIDFromID(*outs.UserID)
+	didFromToken, err := core.ParseDIDFromID(core.ID(*outs.UserID))
 	assert.Nil(t, err)
 
 	assert.EqualValues(t, senderDID.String(), didFromToken.String())

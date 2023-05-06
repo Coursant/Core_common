@@ -1,18 +1,18 @@
 package protocol
 
-import "github.com/iden3/iden3comm"
+import "github.com/Coursant/Core_common"
 
 const (
 	// MessageFetchRequestMessageType defines message fetch request type of the communication protocol.
-	MessageFetchRequestMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "messages/1.0/fetch"
+	MessageFetchRequestMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "messages/1.0/fetch"
 )
 
 // MessageFetchRequestMessage represent Iden3message for message fetch request.
 type MessageFetchRequestMessage struct {
-	ID       string                    `json:"id"`
-	Typ      iden3comm.MediaType       `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage `json:"type"`
-	ThreadID string                    `json:"thid,omitempty"`
+	ID       string                      `json:"id"`
+	Typ      Core_common.MediaType       `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage `json:"type"`
+	ThreadID string                      `json:"thid,omitempty"`
 
 	Body MessageFetchRequestMessageBody `json:"body,omitempty"`
 

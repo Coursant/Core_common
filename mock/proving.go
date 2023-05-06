@@ -8,11 +8,11 @@ import (
 	"encoding/json"
 	"math/big"
 
+	jwz "github.com/Coursant/Core_js_web_Zk"
+	core "github.com/Coursant/Core_origin"
+	"github.com/Coursant/Core_rapidsnark/types"
 	"github.com/iden3/go-circuits"
-	core "github.com/iden3/go-iden3-core"
 	"github.com/iden3/go-iden3-crypto/babyjub"
-	"github.com/iden3/go-jwz"
-	"github.com/iden3/go-rapidsnark/types"
 	"gopkg.in/square/go-jose.v2"
 )
 

@@ -1,22 +1,22 @@
 package protocol
 
 import (
-	"github.com/iden3/iden3comm"
+	"github.com/Coursant/Core_common"
 )
 
 const (
 	// ProofGenerationRequestMessageType is type for request of proof generation
-	ProofGenerationRequestMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "proofs/1.0/request"
+	ProofGenerationRequestMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "proofs/1.0/request"
 	// ProofGenerationResponseMessageType is type for response of proof generation
-	ProofGenerationResponseMessageType iden3comm.ProtocolMessage = iden3comm.Iden3Protocol + "proofs/1.0/response"
+	ProofGenerationResponseMessageType Core_common.ProtocolMessage = Core_common.Iden3Protocol + "proofs/1.0/response"
 )
 
 // ProofGenerationRequestMessage is struct the represents body for proof generation request
 type ProofGenerationRequestMessage struct {
-	ID       string                    `json:"id"`
-	Typ      iden3comm.MediaType       `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage `json:"type"`
-	ThreadID string                    `json:"thid,omitempty"`
+	ID       string                      `json:"id"`
+	Typ      Core_common.MediaType       `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage `json:"type"`
+	ThreadID string                      `json:"thid,omitempty"`
 
 	Body ProofGenerationRequestMessageBody `json:"body,omitempty"`
 
@@ -31,10 +31,10 @@ type ProofGenerationRequestMessageBody struct {
 
 // ProofGenerationResponseMessage is struct the represents body for proof generation request
 type ProofGenerationResponseMessage struct {
-	ID       string                    `json:"id"`
-	Typ      iden3comm.MediaType       `json:"typ,omitempty"`
-	Type     iden3comm.ProtocolMessage `json:"type"`
-	ThreadID string                    `json:"thid,omitempty"`
+	ID       string                      `json:"id"`
+	Typ      Core_common.MediaType       `json:"typ,omitempty"`
+	Type     Core_common.ProtocolMessage `json:"type"`
+	ThreadID string                      `json:"thid,omitempty"`
 
 	Body ResponseMessageBody `json:"body,omitempty"`
 

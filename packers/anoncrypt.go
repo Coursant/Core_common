@@ -4,14 +4,14 @@ package packers
 import (
 	"encoding/json"
 
-	"github.com/iden3/iden3comm"
+	"github.com/Coursant/Core_common"
 	"github.com/pkg/errors"
 
 	jose "gopkg.in/square/go-jose.v2"
 )
 
 // MediaTypeEncryptedMessage is media type for ecnrypted message
-const MediaTypeEncryptedMessage iden3comm.MediaType = "application/iden3comm-encrypted-json"
+const MediaTypeEncryptedMessage Core_common.MediaType = "application/Core_common-encrypted-json"
 
 // AnoncryptPacker is  packer for anon encryption / decryption
 type AnoncryptPacker struct {
@@ -21,7 +21,7 @@ type AnoncryptPacker struct {
 // AnoncryptPackerParams is params for anoncrypt packer
 type AnoncryptPackerParams struct {
 	RecipientKey *jose.JSONWebKey
-	iden3comm.PackerParams
+	Core_common.PackerParams
 }
 
 // NewAnoncryptPacker returns new anon packers
@@ -38,7 +38,7 @@ func (kr KeyResolverHandlerFunc) Resolve(keyID string) (key interface{}, err err
 }
 
 // Pack returns packed message to transport envelope
-func (p *AnoncryptPacker) Pack(payload []byte, params iden3comm.PackerParams) ([]byte, error) {
+func (p *AnoncryptPacker) Pack(payload []byte, params Core_common.PackerParams) ([]byte, error) {
 
 	packerParams, ok := params.(AnoncryptPackerParams)
 	if !ok {
@@ -66,7 +66,7 @@ func (p *AnoncryptPacker) Pack(payload []byte, params iden3comm.PackerParams) ([
 }
 
 // Unpack returns unpacked message from transport envelope
-func (p *AnoncryptPacker) Unpack(envelope []byte) (*iden3comm.BasicMessage, error) {
+func (p *AnoncryptPacker) Unpack(envelope []byte) (*Core_common.BasicMessage, error) {
 
 	jwe, err := jose.ParseEncrypted(string(envelope))
 	if err != nil {
@@ -80,7 +80,7 @@ func (p *AnoncryptPacker) Unpack(envelope []byte) (*iden3comm.BasicMessage, erro
 	if err != nil {
 		return nil, err
 	}
-	var msg iden3comm.BasicMessage
+	var msg Core_common.BasicMessage
 	err = json.Unmarshal(payload, &msg)
 	if err != nil {
 		return nil, err
@@ -88,7 +88,7 @@ func (p *AnoncryptPacker) Unpack(envelope []byte) (*iden3comm.BasicMessage, erro
 	return &msg, err
 }
 
-// MediaType for iden3comm
-func (p *AnoncryptPacker) MediaType() iden3comm.MediaType {
+// MediaType for Core_common
+func (p *AnoncryptPacker) MediaType() Core_common.MediaType {
 	return MediaTypeEncryptedMessage
 }

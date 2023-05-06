@@ -5,15 +5,15 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/Coursant/Core_common"
+	jwz "github.com/Coursant/Core_js_web_Zk"
+	core "github.com/Coursant/Core_origin"
 	"github.com/iden3/go-circuits"
-	core "github.com/iden3/go-iden3-core"
-	"github.com/iden3/go-jwz"
-	"github.com/iden3/iden3comm"
 	"github.com/pkg/errors"
 )
 
 // MediaTypeZKPMessage is media type for jwz
-const MediaTypeZKPMessage iden3comm.MediaType = "application/iden3-zkp-json"
+const MediaTypeZKPMessage Core_common.MediaType = "application/iden3-zkp-json"
 
 // DataPreparerHandlerFunc registers the handler function for inputs preparation.
 type DataPreparerHandlerFunc func(hash []byte, id *core.DID, circuitID circuits.CircuitID) ([]byte, error)
@@ -74,7 +74,7 @@ func NewProvingParams(dataPreparer DataPreparerHandlerFunc, provingKey, wasm []b
 type ZKPPackerParams struct {
 	SenderID         *core.DID
 	ProvingMethodAlg jwz.ProvingMethodAlg
-	iden3comm.PackerParams
+	Core_common.PackerParams
 }
 
 // NewZKPPacker creates new zkp packer instance
@@ -87,7 +87,7 @@ func NewZKPPacker(provingParams map[jwz.ProvingMethodAlg]ProvingParams,
 }
 
 // Pack returns packed message to transport envelope with a zero knowledge proof in JWZ full serialized format
-func (p *ZKPPacker) Pack(payload []byte, params iden3comm.PackerParams) ([]byte, error) {
+func (p *ZKPPacker) Pack(payload []byte, params Core_common.PackerParams) ([]byte, error) {
 
 	// create hash of message
 	var err error
@@ -130,7 +130,7 @@ func (p *ZKPPacker) Pack(payload []byte, params iden3comm.PackerParams) ([]byte,
 }
 
 // Unpack returns unpacked message from transport envelope with verification of zeroknowledge proof
-func (p *ZKPPacker) Unpack(envelope []byte) (*iden3comm.BasicMessage, error) {
+func (p *ZKPPacker) Unpack(envelope []byte) (*Core_common.BasicMessage, error) {
 
 	token, err := jwz.Parse(string(envelope))
 	if err != nil {
@@ -155,7 +155,7 @@ func (p *ZKPPacker) Unpack(envelope []byte) (*iden3comm.BasicMessage, error) {
 		return nil, err
 	}
 
-	var msg iden3comm.BasicMessage
+	var msg Core_common.BasicMessage
 	err = json.Unmarshal(token.GetPayload(), &msg)
 	if err != nil {
 		return nil, errors.WithStack(err)
@@ -169,7 +169,7 @@ func (p *ZKPPacker) Unpack(envelope []byte) (*iden3comm.BasicMessage, error) {
 
 	return &msg, err
 }
-func verifySender(token *jwz.Token, msg iden3comm.BasicMessage) error {
+func verifySender(token *jwz.Token, msg Core_common.BasicMessage) error {
 
 	var err error
 	switch circuits.CircuitID(token.CircuitID) {
@@ -213,7 +213,7 @@ func verifyAuthV2Sender(from string, pubSignals []string) error {
 		return err
 	}
 
-	return checkSender(from, authPubSignals.UserID)
+	return checkSender(from, (*core.ID)(authPubSignals.UserID))
 }
 
 func checkSender(from string, id *core.ID) error {
@@ -241,7 +241,7 @@ func unmarshalPubSignals(obj circuits.PubSignalsUnmarshaller, pubSignals []strin
 	return nil
 }
 
-// MediaType for iden3comm that returns MediaTypeZKPMessage
-func (p *ZKPPacker) MediaType() iden3comm.MediaType {
+// MediaType for Core_common that returns MediaTypeZKPMessage
+func (p *ZKPPacker) MediaType() Core_common.MediaType {
 	return MediaTypeZKPMessage
 }
