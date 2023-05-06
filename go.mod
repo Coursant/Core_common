@@ -3,14 +3,17 @@ module github.com/Coursant/Core_common
 go 1.18
 
 require (
-	github.com/gofrs/uuid v3.3.0+incompatible
-	github.com/iden3/go-circuits v1.0.3
-	github.com/iden3/go-iden3-core v1.0.2
+	github.com/Coursant/Core_origin v1.0.0
+	github.com/Coursant/Core_rapidsnark/types v1.0.2
+	github.com/Coursant/Core_rapidsnark/verifier v1.0.2
+	github.com/Coursant/Core_rapidsnark/witness v1.0.1
+	github.com/Coursant/Core_js_web_Zk v1.0.0
+	github.com/iden3/go-circuits v1.0.2
 	github.com/iden3/go-iden3-crypto v0.0.15
-	github.com/iden3/go-jwz v1.0.0
-	github.com/iden3/go-rapidsnark/types v0.0.3
+	github.com/stretchr/testify v1.8.2
+	github.com/gofrs/uuid v3.3.0+incompatible
+	github.com/iden3/go-iden3-crypto v0.0.15
 	github.com/iden3/go-schema-processor v1.1.5
-	github.com/iden3/iden3comm v1.0.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.8.2
 	gopkg.in/square/go-jose.v2 v2.6.0
