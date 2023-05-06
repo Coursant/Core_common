@@ -4,9 +4,8 @@ import (
 	"encoding/json"
 	"testing"
 
+	core "github.com/Coursant/Core_origin"
 	"github.com/gofrs/uuid"
-	core "github.com/iden3/go-iden3-core"
-	"github.com/iden3/go-jwz"
 	"github.com/iden3/iden3comm"
 	"github.com/iden3/iden3comm/mock"
 	"github.com/iden3/iden3comm/packers"

@@ -2,8 +2,8 @@ package processor
 
 import (
 	"context"
+	"github.com/Coursant/Core_common/schema-processor/verifiable"
 
-	"github.com/Coursant/Core_common/schema-processorr/verifiable"
 	core "github.com/Coursant/Core_origin"
 	"github.com/pkg/errors"
 )
