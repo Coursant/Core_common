@@ -1,4 +1,4 @@
-package iden3comm
+package Core_common
 
 import "encoding/json"
 

@@ -1,5 +1,5 @@
 // Package iden3comm defines core structures and intefaces for the messaging protocol
-package iden3comm
+package Core_common
 
 import (
 	"bytes"

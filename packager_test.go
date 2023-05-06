@@ -1,4 +1,4 @@
-package iden3comm_test
+package Core_common_test
 
 import (
 	"encoding/json"
